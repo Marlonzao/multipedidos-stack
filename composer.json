@@ -1,0 +1,12 @@
+{
+    "name": "multipedidos/multipedidos-stack",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Marlon",
+            "email": "marlon@multipedidos.com.br"
+        }
+    ],
+    "require": {}
+}
