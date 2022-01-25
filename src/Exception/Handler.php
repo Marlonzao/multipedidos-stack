@@ -1,18 +1,18 @@
 <?php
 
-namespace Exceptions;
+namespace Multipedidos;
 
 use Exception;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-use Laravel\Lumen\Exceptions\Handler as ExceptionHandler;
+use Laravel\Lumen\Exceptions\Handler as LaravelHandler;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 
 use Symfony\Component\Console\Application as ConsoleApplication;
 use Symfony\Component\Console\Output\ConsoleOutput;
 
-class Handler extends ExceptionHandler
+class ExceptionHandler extends LaravelHandler
 {
     /**
      * A list of the exception types that should not be reported.
