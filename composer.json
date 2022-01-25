@@ -8,5 +8,8 @@
             "email": "marlon@multipedidos.com.br"
         }
     ],
-    "require": {}
+    "require": {},
+    "autoload": {
+        "classmap": ["src/"]
+    }
 }
