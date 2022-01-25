@@ -34,7 +34,7 @@ class ExceptionHandler extends LaravelHandler
      * @param  \Exception  $exception
      * @return void
      */
-    public function report(Exception $exception)
+    public function report(Throwable $exception)
     {
         if(env('APP_ENV') != 'production'){
             parent::report($exception);
@@ -68,7 +68,7 @@ class ExceptionHandler extends LaravelHandler
      * @param  \Exception  $exception
      * @return \Illuminate\Http\Response
      */
-    public function render($request, Exception $exception)
+    public function render($request, Throwable $exception)
     {
         if($this->checkIsMultipedidosException($exception)){
             return response()->json([
@@ -87,6 +87,8 @@ class ExceptionHandler extends LaravelHandler
             (new ConsoleApplication)->renderException($exception, $output);
             exit(1);
         }
+
+        return parent::render($request, $exception);
     }
 
     public function checkIsMultipedidosException($exception)
