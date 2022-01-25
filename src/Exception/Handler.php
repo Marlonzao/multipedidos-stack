@@ -2,7 +2,7 @@
 
 namespace Multipedidos;
 
-use Exception;
+use \Throwable;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
