@@ -15,8 +15,6 @@
             $this->data     = $request->all();
 
             $this->domainID     = last($request->route()[2]);
-            $this->restaurantID = $request->restaurantID;
-            $this->cashierID    = $request->cashierID;
 
             $this->domain = new $this->domain();
         }
