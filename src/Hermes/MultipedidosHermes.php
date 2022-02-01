@@ -3,25 +3,47 @@
 
     abstract class Hermes
     {
-        public $client, $baseURL;
+        private $client;
 
-        public function init(...$args)
+        private $baseURL;
+        private $auth = [];
+        private $headers = [];
+        private $contentType = 'application/json';
+
+        public function __construct()
         {
-            if(method_exists($this, 'boot'))
-                $this->boot(...$args);
+            $this->auth();
+            $this->headers();
+            $this->baseURL();
+            $this->contentType();
 
-            return $this;
+            $this->run();
         }
+        
+        protected function auth()
+        {}
+        
+        protected function headers()
+        {}
+        
+        protected function baseURL()
+        {}
 
-        public function run($config = [])
+        protected function contentType()
+        {}
+
+        private function run()
         {
+            $headers = $this->headers;
+
+            if(!is_null($this->contentType))
+                $headers = array_merge(['Content-Type' => $this->contentType], $headers);
+
             $clientOptions = [
                 'base_uri' => $this->baseURL,
-                'headers' => array_merge(['Content-Type' => 'application/json'], $config['headers'] ?? [])
+                'headers'  => $headers,
+                'auth'     => $this->auth
             ];
-
-            if(isset($config['auth']))
-                $clientOptions['auth'] = $config['auth'];
 
             $this->client = new \GuzzleHttp\Client($clientOptions);
         }
