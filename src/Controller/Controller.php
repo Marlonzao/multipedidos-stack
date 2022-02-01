@@ -43,7 +43,7 @@
 
         public function delete()
         {
-            $this->domain->deleteByID($this->domainID);
+            $this->domain->getByID($this->domainID)->delete();
         }
 
         protected function getAllByRestaurantID()

@@ -84,7 +84,7 @@ class ExceptionHandler extends LaravelHandler
 
             $output = new ConsoleOutput(ConsoleOutput::VERBOSITY_VERBOSE, null, $outputFormatter);
 
-            (new ConsoleApplication)->renderException($exception, $output);
+            (new ConsoleApplication)->renderThrowable($exception, $output);
             exit(1);
         }
 
