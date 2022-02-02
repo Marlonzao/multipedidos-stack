@@ -14,7 +14,7 @@
             $this->request  = $request;
             $this->data     = $request->all();
 
-            $this->domainID     = last($request->route()[2]);
+            $this->domainID = last($request->route()[2]);
 
             $this->domain = new $this->domain();
         }
@@ -26,12 +26,12 @@
 
         protected function update()
         {
-            $this->domain->getByID($this->domainID)->update($this->data);
+            $this->domain->find($this->domainID)->update($this->data);
         }
 
-        protected function getByID()
+        protected function find()
         {
-            $this->domain->getByID($this->domainID);
+            $this->domain->find($this->domainID);
         }
 
         protected function all()
@@ -41,28 +41,7 @@
 
         public function delete()
         {
-            $this->domain->getByID($this->domainID)->delete();
-        }
-
-        protected function getAllByRestaurantID()
-        {    
-            $this->domain->getAllByRestaurantID($this->restaurantID);
-            
-            $this->throw_error_if_not_found();
-        }
-
-        protected function getByRestaurantID()
-        {   
-           $this->domain->getByRestaurantID($this->restaurantID);
-            
-            $this->throw_error_if_not_found();
-        }
-
-        protected function getByCashierID()
-        {   
-            $this->domain->getByCashierID($this->cashierID);
-
-            $this->throw_error_if_not_found();
+            $this->domain->delete($this->domainID);
         }
 
         protected function throw_error_if_not_found()
