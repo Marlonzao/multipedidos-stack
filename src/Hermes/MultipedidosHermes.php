@@ -12,25 +12,33 @@
 
         public function __construct()
         {
-            $this->auth();
-            $this->headers();
-            $this->baseURL();
-            $this->contentType();
+            $this->auth        = $this->auth();
+            $this->headers     = $this->headers();
+            $this->baseURL     = $this->baseURL();
+            $this->contentType = $this->contentType();
 
             $this->run();
         }
         
         protected function auth()
-        {}
+        {
+            return $this->auth;
+        }
         
         protected function headers()
-        {}
+        {
+            return $this->headers;
+        }
         
         protected function baseURL()
-        {}
+        {
+            return $this->baseURL;
+        }
 
         protected function contentType()
-        {}
+        {
+            return $this->contentType;
+        }
 
         private function run()
         {
