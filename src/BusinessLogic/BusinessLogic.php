@@ -72,4 +72,9 @@ abstract class BusinessLogic
         $this->model = $model;
         return $this;
     }
+
+    public function getModel()
+    {
+        return $this->model;
+    }
 }
