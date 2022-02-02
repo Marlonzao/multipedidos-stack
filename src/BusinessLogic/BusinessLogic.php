@@ -8,14 +8,15 @@ abstract class BusinessLogic
 
     public function __construct()
     {
-        if(isset($this->repository)){
-            $this->repository = new $this->repository($this->modelQuery);
-        }else{
+        if(is_null($this->repository)){
             $this->initRepository();
+            return;
         }
+
+        $this->repository = new $this->repository($this->modelQuery);
     }
 
-    protected function initRepository()
+    private function initRepository()
     {
         $this->repository = new RepositoryV2($this->modelQuery);
     }
@@ -39,14 +40,14 @@ abstract class BusinessLogic
         return (array) $data;
     }
 
-    protected function insert($data)
+    protected function insert($data): self
     {   
         $data = $this->constructorParser($data, 'create');
         $this->model = $this->repository->create($data);
         return $this;
     }
 
-    protected function updateFromModel($data)
+    protected function updateFromModel($data): self
     {
         if (key_exists('id', $data)) unset($data['id']);
         $data = $this->constructorParser($data, 'update');
@@ -54,13 +55,13 @@ abstract class BusinessLogic
         return $this;
     }
 
-    protected function deleteByID($domainID)
+    protected function deleteByID($domainID): self
     {
         $this->repository->delete($this->domainID);
         return $this;
     }
 
-    protected function getByID($domainID)
+    protected function getByID($domainID): self
     {
         $this->model = $this->repository->getByID($domainID);
         return $this;
@@ -70,10 +71,5 @@ abstract class BusinessLogic
     {
         $this->model = $model;
         return $this;
-    }
-
-    public function getModel()
-    {
-        return $this->model;
     }
 }
