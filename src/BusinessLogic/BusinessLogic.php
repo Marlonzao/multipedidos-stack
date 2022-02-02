@@ -54,51 +54,15 @@ abstract class BusinessLogic
         return $this;
     }
 
-    protected function deleteModel()
+    protected function deleteByID($domainID)
     {
-        $this->repository->delete($this->model->id);
+        $this->repository->delete($this->domainID);
         return $this;
     }
 
     protected function getByID($domainID)
     {
         $this->model = $this->repository->getByID($domainID);
-        return $this;
-    }
-
-    public function restaurantID($restaurantID)
-    {
-        $this->restaurantID = $restaurantID;
-        return $this;
-    }
-
-    public function getByRestaurantID($restaurantID)
-    {
-        $this->restaurantID($restaurantID);
-
-        $this->model = $this->repository->getByRestaurantID($this->restaurantID);
-        return $this;
-    }
-
-    public function getAllByRestaurantID($restaurantID)
-    {
-        $this->restaurantID($restaurantID);
-
-        $this->model = $this->repository->getAllByRestaurantID($this->restaurantID);
-        return $this;
-    }
-
-    public function cashierID($cashierID)
-    {
-        $this->cashierID = $cashierID;
-        return $this;
-    }
-
-    public function getByCashierID($cashierID)
-    {
-        $this->cashierID($cashierID);
-
-        $this->model = $this->repository->getByCashierID($this->cashierID);
         return $this;
     }
 

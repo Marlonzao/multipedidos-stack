@@ -4,8 +4,8 @@ namespace Multipedidos\BusinessLogic;
 
 trait Delete
 {
-    public function delete()
+    public function delete($domainID)
     {
-        return $this->deleteModel();
+        return $this->deleteByID($domainID);
     }
 }
