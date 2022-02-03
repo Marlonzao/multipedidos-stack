@@ -57,7 +57,7 @@ abstract class BusinessLogic
 
     protected function deleteByID($domainID): self
     {
-        $this->repository->delete($this->domainID);
+        $this->repository->delete($domainID);
         return $this;
     }
 
