@@ -18,7 +18,7 @@ abstract class BusinessLogic
 
     private function initRepository()
     {
-        $this->repository = new RepositoryV2($this->modelQuery);
+        $this->repository = new Repository($this->modelQuery);
     }
 
     private function constructorParser($data, $operation = 'always')
