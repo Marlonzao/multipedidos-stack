@@ -105,7 +105,7 @@
                             return;
                         }
 
-                        throw $e;
+                        throw new \Exception($this->errorMessage, $this->errorCode, $e);
                     }
 
                     $responseBody = json_decode($response->getBody());
