@@ -23,16 +23,6 @@ class Repository
     {
         $model->fill($dataToUpdate)->save();
         return $model;
-    }    
-
-    public function getByRestaurantID($restaurantID)
-    {
-        return $this->modelQuery::where('restaurant_id', $restaurantID)->first();
-    }
-
-    public function getAllByRestaurantID($restaurantID)
-    {
-        return $this->modelQuery::where('restaurant_id', $restaurantID)->get();
     }
 
     public function getByID($recordID)

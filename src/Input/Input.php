@@ -2,7 +2,9 @@
 
 namespace Multipedidos;
 
-abstract class Input extends FilterBuilder
+use Illuminate\Support\Arr;
+
+abstract class ParserV2 extends FilterBuilder
 {
     public $origin, $parser, $parsed, $currentParse, $collectionToBeParsed, $responseClass;
 
@@ -40,16 +42,37 @@ abstract class Input extends FilterBuilder
         $this->currentParse = $this->filter();
 
         foreach($this->currentParse as $parseFrom => $parseTo) {
-            $currentValue = $this->collectionToBeParsed->pluck($parseFrom)->first();
-            if(is_null($currentValue)) continue;
+            try{
+                $currentValue = $this->extract($parseFrom);
+            }catch(\MultipedidosException $mpe) {
+                continue;
+            }
 
-            $this->parsed = $this->parsed->merge([$parseTo => $currentValue]); 
+            $this->parsed->put($parseTo, $currentValue);
         }
 
+        $this->undot();
         $this->buildResponseClass();
         $this->validate();
 
         return $this->responseClass;
+    }
+
+    protected function extract($key)
+    {
+        $value = $this->collectionToBeParsed->pluck($key)->first();
+
+        if(is_null($value))
+            throw new \MultipedidosException('Value cannot be null');
+
+        return $value;
+    }
+
+    private function undot() 
+    { 
+        $all = $this->parsed->all();
+        $result = undot($all);
+        $this->parsed = collect($result);
     }
 
     private function buildResponseClass()

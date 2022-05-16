@@ -3,55 +3,17 @@
 
     abstract class Hermes
     {
-        private $client;
+        public $client, $baseURL;
 
-        private $baseURL;
-        private $auth = [];
-        private $headers = [];
-        private $contentType = 'application/json';
-
-        public function __construct()
+        public function __construct($config = [])
         {
-            $this->auth        = $this->auth();
-            $this->headers     = $this->headers();
-            $this->baseURL     = $this->baseURL();
-            $this->contentType = $this->contentType();
-
-            $this->run();
-        }
-        
-        protected function auth()
-        {
-            return $this->auth;
-        }
-        
-        protected function headers()
-        {
-            return $this->headers;
-        }
-        
-        protected function baseURL()
-        {
-            return $this->baseURL;
-        }
-
-        protected function contentType()
-        {
-            return $this->contentType;
-        }
-
-        private function run()
-        {
-            $headers = $this->headers;
-
-            if(!is_null($this->contentType))
-                $headers = array_merge(['Content-Type' => $this->contentType], $headers);
-
             $clientOptions = [
                 'base_uri' => $this->baseURL,
-                'headers'  => $headers,
-                'auth'     => $this->auth
+                'headers' => array_merge(['Content-Type' => 'application/json'], $config['headers'] ?? [])
             ];
+
+            if(isset($config['auth']))
+                $clientOptions['auth'] = $config['auth'];
 
             $this->client = new \GuzzleHttp\Client($clientOptions);
         }
@@ -136,7 +98,7 @@
                     } catch (\Exception $e) {
 
                         if(isset($this->errorCallback)){
-                            $this->errorCallback($e);
+                            $this->errorCallback->call($this, $e);
                             return;
                         }
 
