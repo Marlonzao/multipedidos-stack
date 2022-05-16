@@ -11,7 +11,7 @@ class Repository
             $this->modelQuery = $modelQuery;
 
         if(is_null($this->modelQuery)) 
-            throw new \MultipedidosException('No modelQuery provided', 500);
+            throw new \Error('No modelQuery provided', 500);
     }
 
     public function create(Array $record)
