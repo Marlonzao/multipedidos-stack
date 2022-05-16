@@ -7,6 +7,9 @@
 
         public function __construct($config = [])
         {
+            if(!isset($this->baseURL))
+                throw new \Error('baseURL is required');
+
             $clientOptions = [
                 'base_uri' => $this->baseURL,
                 'headers' => array_merge(['Content-Type' => 'application/json'], $config['headers'] ?? [])
