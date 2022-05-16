@@ -24,13 +24,13 @@ abstract class Validator extends FilterBuilder
 
             $isRequired = in_array('required', $rules);
             if($isRequired && !$currentValue)
-                throw new \MultipedidosException("$alias is required", 400);
+                throw new \Error("$alias is required", 400);
 
             if(!$currentValue) continue;
 
             $dataType = collect(array_intersect($rules, $this->availableDataTypes))->first();
             if($dataType && gettype($currentValue) != $dataType)
-                throw new \MultipedidosException("Invalid data type, $alias must be $dataType", 400);
+                throw new \Error("Invalid data type, $alias must be $dataType", 400);
         }
     }
 }

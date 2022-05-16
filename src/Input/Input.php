@@ -42,13 +42,10 @@ abstract class ParserV2 extends FilterBuilder
         $this->currentParse = $this->filter();
 
         foreach($this->currentParse as $parseFrom => $parseTo) {
-            try{
-                $currentValue = $this->extract($parseFrom);
-            }catch(\MultipedidosException $mpe) {
-                continue;
-            }
+            $currentValue = $this->extract($parseFrom);
 
-            $this->parsed->put($parseTo, $currentValue);
+            if(!is_null($currentValue))
+                $this->parsed->put($parseTo, $currentValue);
         }
 
         $this->undot();
@@ -60,12 +57,7 @@ abstract class ParserV2 extends FilterBuilder
 
     protected function extract($key)
     {
-        $value = $this->collectionToBeParsed->pluck($key)->first();
-
-        if(is_null($value))
-            throw new \MultipedidosException('Value cannot be null');
-
-        return $value;
+        return $this->collectionToBeParsed->pluck($key)->first();
     }
 
     private function undot() 

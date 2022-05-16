@@ -47,7 +47,7 @@
         protected function throw_error_if_not_found()
         {
             if( $this->domain->getModel() === null ) 
-                throw new \MultipedidosException("{$this->domainName} not found", 404);
+                abort(404, "{$this->domainName} not found")    
         }
 
         public function __call($name, $arguments)

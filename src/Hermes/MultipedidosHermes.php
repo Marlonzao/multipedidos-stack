@@ -105,7 +105,7 @@
                             return;
                         }
 
-                        \MultipedidosException::e($this->errorMessage, $this->errorCode)->setLastError($e)->throw();
+                        throw $e;
                     }
 
                     $responseBody = json_decode($response->getBody());
