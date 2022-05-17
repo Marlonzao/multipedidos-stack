@@ -8,7 +8,9 @@
             "email": "marlon@multipedidos.com.br"
         }
     ],
-    "require": {},
+    "require": {
+        "firebase/php-jwt": "^6.0"
+    },
     "autoload": {
         "classmap": ["src/"]
     }
