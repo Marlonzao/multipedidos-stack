@@ -4,22 +4,7 @@ namespace Multipedidos;
 
 abstract class BusinessLogic
 {
-    protected $model, $modelQuery, $repository, $input;
-
-    public function __construct()
-    {
-        if(is_null($this->repository)){
-            $this->initRepository();
-            return;
-        }
-
-        $this->repository = new $this->repository($this->modelQuery);
-    }
-
-    private function initRepository()
-    {
-        $this->repository = new Repository($this->modelQuery);
-    }
+    protected $model, $repository, $input;
 
     private function constructorParser($data, $operation = 'always')
     {

@@ -44,9 +44,4 @@ class Repository
     {
         return $this->modelQuery::updateOrCreate($query, $record);
     }
-    
-    public function getBy($index, $value)
-    {
-        return $this->modelQuery::where($index, $value)->first();
-    }
 }
