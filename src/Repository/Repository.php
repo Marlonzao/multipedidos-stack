@@ -5,15 +5,6 @@ class Repository
 {
     protected $modelQuery;
 
-    public function __construct($modelQuery = null)
-    {
-        if(!is_null($modelQuery))
-            $this->modelQuery = $modelQuery;
-
-        if(is_null($this->modelQuery)) 
-            throw new \Error('No modelQuery provided', 500);
-    }
-
     public function create(Array $record)
     {
         return $this->modelQuery::create($record);
