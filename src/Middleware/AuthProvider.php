@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Providers;
+namespace Multipedidos\Auth;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -11,7 +11,7 @@ use Firebase\JWT\Key;
 use Firebase\JWT\JWT as FirebaseJWT;
 use Spatie\Permission\Models\Role;
 
-class AuthProvider extends ServiceProvider
+class Provider extends ServiceProvider
 {
     /**
      * Register any application services.

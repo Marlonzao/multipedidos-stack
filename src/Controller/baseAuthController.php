@@ -88,7 +88,7 @@ class AuthController extends Controller
         $payload = [
             'type' => $this->userType,
             'iat'  => time(),
-            'iss'  => 'agendar-com-vc',
+            'iss'  => env('APP_NAME'),
             'exp'  => time() + 60 * 60 * 2,
             'sub'  => $this->userUUID
         ];
