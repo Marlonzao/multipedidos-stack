@@ -17,7 +17,7 @@ abstract class BusinessLogic
         if (key_exists('id', $data)) 
             unset($data['id']);
 
-        $this->model = $this->repository->updateFromModel($this->model, $data);
+        $this->model = $this->repository->model($this->model)->update($data);
         return $this;
     }
 
