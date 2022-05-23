@@ -5,7 +5,7 @@ class Repository
 {
     protected $modelQuery;
 
-    public function create(Array $record)
+    public function create(array $record)
     {
         return $this->modelQuery::create($record);
     }
@@ -16,7 +16,7 @@ class Repository
         return $model;
     }
 
-    public function getByID($recordID)
+    public function getByID(int $recordID)
     {
         return $this->modelQuery::find($recordID);
     }
@@ -26,12 +26,12 @@ class Repository
         return $this->modelQuery::all();
     }
 
-    public function delete($recordID)
+    public function delete(int $recordID)
     {
         return $this->modelQuery::find($recordID)->delete();
     }
 
-    public function updateOrCreate($query, Array $record)
+    public function updateOrCreate(array $query, array $record)
     {
         return $this->modelQuery::updateOrCreate($query, $record);
     }
