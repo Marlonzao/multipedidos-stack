@@ -10,13 +10,19 @@ class Repository
         return $this->modelQuery::create($record);
     }
 
-    public function updateFromModel($model, Array $dataToUpdate)
+    public function model($model): self
     {
-        $model->fill($dataToUpdate)->save();
+        $this->model = $model;
+        return $this;
+    }
+
+    public function update(Array $dataToUpdate)
+    {
+        $this->model->fill($dataToUpdate)->save();
         return $model;
     }
 
-    public function getByID(int $recordID)
+    public function find(int $recordID)
     {
         return $this->modelQuery::find($recordID);
     }
