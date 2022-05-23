@@ -6,7 +6,7 @@
 
     class Controller extends BaseController
     {
-        protected $domain, $collection;
+        protected $domain;
         protected $domainName = 'Domain';
 
         protected function create()

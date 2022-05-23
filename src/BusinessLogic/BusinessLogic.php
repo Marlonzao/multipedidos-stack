@@ -29,7 +29,7 @@ abstract class BusinessLogic
 
     public function find(int $domainID): self
     {
-        $this->model = $this->repository->getByID($domainID);
+        $this->model = $this->repository->find($domainID);
         return $this;
     }
 
