@@ -39,7 +39,7 @@ abstract class BusinessLogic
         return $this;
     }
 
-    public function model($model)
+    public function model($model): self
     {
         $this->model = $model;
         return $this;
