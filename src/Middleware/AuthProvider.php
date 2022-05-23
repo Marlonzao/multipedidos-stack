@@ -86,10 +86,6 @@ class Provider extends ServiceProvider
             
         });
 
-        Auth::guard('jwt')->macro('merchant', function () {
-            return Auth::user()->merchant;
-        });
-
         Auth::guard('jwt')->macro('userResource', function () {
             $user = Auth::user();
             $resource = config("userType.{$user->type}.resource");
