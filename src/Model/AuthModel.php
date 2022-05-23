@@ -2,9 +2,10 @@
 
 namespace Multipedidos;
 
-use Illuminate\Database\Eloquent\Model as BaseModel;
+use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Traits\HasRoles;
 
+use Illuminate\Database\Eloquent\Model as BaseModel;
 class AuthUserModel extends BaseModel
 {
     use HasRoles;
@@ -16,6 +17,7 @@ class AuthUserModel extends BaseModel
         parent::boot();
 
         static::creating(function ($model) {
+            $model->password = Hash::make($model->password);
             $model->uuid = (string) random_string_generator(30);
         });
     }
