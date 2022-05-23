@@ -22,16 +22,16 @@ class AuthUserModel extends BaseModel
         });
     }
 
-    public function findByUUID($uuid)
+    public static function findByUUID($uuid)
     {
-        return $this->where([
+        return static::where([
             ['uuid', '=', $uuid]
         ])->first();
     }
 
-    public function findByEmail($email)
+    public static function findByEmail($email)
     {
-        return $this->where([
+        return static::where([
             ['email', '=', $email]
         ])->first();
     }
