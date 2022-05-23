@@ -22,16 +22,16 @@ class AuthUserModel extends BaseModel
         });
     }
 
-    public function scopefindByUUID($query, $uuid)
+    public function findByUUID($uuid)
     {
-        return $query->where([
+        return $this->where([
             ['uuid', '=', $uuid]
         ])->first();
     }
 
-    public function scopefindByEmail($query, $email)
+    public function findByEmail($email)
     {
-        return $query->where([
+        return $this->where([
             ['email', '=', $email]
         ])->first();
     }
