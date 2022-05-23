@@ -12,6 +12,9 @@
         "firebase/php-jwt": "^6.0"
     },
     "autoload": {
+        "files": [
+            "src/Helpers/helper.php"
+        ],
         "classmap": ["src/"]
     }
 }
