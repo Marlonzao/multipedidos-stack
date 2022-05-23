@@ -44,26 +44,19 @@
             return end(request()->route()[2]);
         }
 
-        protected function throw_error_if_not_found()
-        {
-            if( $this->domain->getModel() === null ) 
-                abort(404, "{$this->domainName} not found");
-        }
-
         public function __call($name, $arguments)
         {
             $this->{$name}(...$arguments);
 
-            $model = $this->domain->getModel();
+            $result = $this->domain->toArray();
 
-            if($model === null) return;
+            if($result === null) return;
 
-            if(is_null($this->collection)) return $model;
-
-            if(str_contains(get_class($model), 'Model')) 
-                return new $this->collection($model);
+            if(is_null($this->collection)) return $result;
                 
-            if(str_contains(get_class($model), 'Collection')) 
-                return $this->collection::collection($model);
+            if(is_array($result[0])) 
+                return $this->collection::collection($result);
+            
+            return new $this->collection($result);
         }
     }

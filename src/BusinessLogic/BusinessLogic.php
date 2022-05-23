@@ -45,8 +45,8 @@ abstract class BusinessLogic
         return $this;
     }
 
-    public function getModel()
+    public function toArray()
     {
-        return $this->model;
+        return $this->model->toArray;
     }
 }
