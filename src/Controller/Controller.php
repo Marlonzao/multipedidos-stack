@@ -54,7 +54,7 @@
 
             if(is_null($this->collection)) return $result;
                 
-            if(array_key_exists($result[0])) 
+            if(isset($result[0])) 
                 return $this->collection::collection($result);
             
             return new $this->collection($result);
