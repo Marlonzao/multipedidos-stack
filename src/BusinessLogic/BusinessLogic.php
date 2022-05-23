@@ -4,7 +4,7 @@ namespace Multipedidos;
 
 abstract class BusinessLogic
 {
-    protected $model, $repository;
+    protected $model, $repository, $collection;
 
     public function create(array $data): self
     {   
@@ -45,8 +45,16 @@ abstract class BusinessLogic
         return $this;
     }
 
-    public function toArray()
+    public function toCollection()
     {
-        return $this->model->toArray();
+        if($this->model === null) return;
+
+        if(is_null($this->collection)) return $this->model;
+
+        if(str_contains(get_class($this->model), 'Model')) 
+            return new $this->collection($this->model);
+            
+        if(str_contains(get_class($this->model), 'Collection')) 
+            return $this->collection::collection($this->model);
     }
 }

@@ -48,15 +48,6 @@
         {
             $this->{$name}(...$arguments);
 
-            $result = $this->domain->toArray();
-
-            if(empty($result)) return;
-
-            if(is_null($this->collection)) return $result;
-                
-            if(isset($result[0])) 
-                return $this->collection::collection($result);
-            
-            return new $this->collection($result);
+            return $this->domain->toCollection();
         }
     }
