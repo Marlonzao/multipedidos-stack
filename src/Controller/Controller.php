@@ -50,7 +50,7 @@
 
             $result = $this->domain->toArray();
 
-            if($result === null) return;
+            if(empty($result)) return;
 
             if(is_null($this->collection)) return $result;
                 
