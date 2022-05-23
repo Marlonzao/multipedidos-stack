@@ -11,6 +11,15 @@ class AuthUserModel extends BaseModel
     
     protected $guard_name = 'jwt';
 
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($model) {
+            $model->uuid = (string) random_string_generator(30);
+        });
+    }
+
     public function scopefindByUUID($query, $uuid)
     {
         return $query->where([
