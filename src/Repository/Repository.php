@@ -19,7 +19,7 @@ class Repository
     public function update(Array $dataToUpdate)
     {
         $this->model->fill($dataToUpdate)->save();
-        return $model;
+        return $this->model;
     }
 
     public function find(int $recordID)
