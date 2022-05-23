@@ -41,13 +41,13 @@
 
         private function domainID()
         {
-            return last(request()->route()[2]);
+            return end(request()->route()[2]);
         }
 
         protected function throw_error_if_not_found()
         {
             if( $this->domain->getModel() === null ) 
-                abort(404, "{$this->domainName} not found")    
+                abort(404, "{$this->domainName} not found");
         }
 
         public function __call($name, $arguments)
