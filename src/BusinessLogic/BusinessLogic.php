@@ -6,13 +6,13 @@ abstract class BusinessLogic
 {
     protected $model, $repository;
 
-    public function create($data): self
+    public function create(array $data): self
     {   
         $this->model = $this->repository->create($data);
         return $this;
     }
 
-    public function update($data): self
+    public function update(array $data): self
     {
         if (key_exists('id', $data)) 
             unset($data['id']);
@@ -21,13 +21,13 @@ abstract class BusinessLogic
         return $this;
     }
 
-    public function delete($domainID): self
+    public function delete(int $domainID): self
     {
         $this->repository->delete($domainID);
         return $this;
     }
 
-    public function find($domainID): self
+    public function find(int $domainID): self
     {
         $this->model = $this->repository->getByID($domainID);
         return $this;
