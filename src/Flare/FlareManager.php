@@ -20,4 +20,9 @@ class Manager extends BaseManager
     {
         return new Local();
     }
+
+    public function createTestingDriver()
+    {
+        return $this->createLocalDriver();
+    }
 }
