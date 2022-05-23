@@ -2,5 +2,7 @@
 
 namespace Multipedidos\Flare;
 
-class Local extends \Noop
+use Multipedidos\Noop;
+
+class Local extends Noop
 {}
