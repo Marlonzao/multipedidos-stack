@@ -66,6 +66,7 @@ class Provider extends BaseServiceProvider
             return app(\Multipedidos\Flare\Manager::class)->driver(env('APP_ENV'));   
         });
 
-        class_alias(\Multipedidos\Flare\Facade::class, 'Flare');
+        if(!class_exists('\Flare'))
+            class_alias(\Multipedidos\Flare\Facade::class, 'Flare');
     }
 }
