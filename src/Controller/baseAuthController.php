@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Lumen\Routing\Controller;
 use Firebase\JWT\JWT as FirebaseJWT;
+use Firebase\JWT\Key;
 
 class AuthController extends Controller
 {
