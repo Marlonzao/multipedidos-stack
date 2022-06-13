@@ -34,14 +34,14 @@
             $this->domain->delete($this->domainID());
         }
 
-        private function data()
+        protected function data()
         {
             return request()->all();
         }
 
-        private function domainID()
+        protected function domainID()
         {
-            return end(request()->route()[2]);
+            return (int) end(request()->route()[2]);
         }
 
         public function __call($name, $arguments)
