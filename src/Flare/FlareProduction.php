@@ -8,6 +8,6 @@ class Production
 {
     public static function create()
     {
-        return Flare::register(env('FLARE_KEY'))->registerFlareHandlers();
+        return Flare::make(env('FLARE_KEY'))->registerFlareHandlers();
     }
 }
