@@ -2,7 +2,7 @@
 
 namespace Multipedidos\Flare;
 
-use Facade\FlareClient\Flare;
+use Spatie\FlareClient\Flare;
 
 class Production
 {
