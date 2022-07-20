@@ -9,7 +9,8 @@
         }
     ],
     "require": {
-        "firebase/php-jwt": "^6.0"
+        "firebase/php-jwt": "^6.0",
+        "spatie/flare-client-php": "1.2.0"
     },
     "autoload": {
         "files": [
